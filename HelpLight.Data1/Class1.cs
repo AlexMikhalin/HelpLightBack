@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HelpLight.Data
+namespace HelpLight.Data1
 {
     public class Class1
     {
