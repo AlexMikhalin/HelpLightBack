@@ -19,4 +19,12 @@
     <ProjectReference Include="..\HelpLight.Repository\HelpLight.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\Events\" />
+    <Folder Include="Images\MarketplaceItems\" />
+    <Folder Include="Images\Organizations\" />
+    <Folder Include="Images\WallRecords\" />
+    <Folder Include="Images\Volunteers\" />
+  </ItemGroup>
+
 </Project>
