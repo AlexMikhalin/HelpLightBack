@@ -5,13 +5,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HelpLight.Repository.Contracts
 {
-    public class Volunteer
+    public class Karma
     {
+        public Karma(Guid volunteerId)
+        {
+            IdVolunteer = volunteerId;
+            TotalScore = 0;
+        }
+
         [Required]
+        public Guid IdKarma { get; set; }
+        public int TotalScore { get; set; }
+
         public Guid IdVolunteer { get; set; }
-        [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
     }
 }

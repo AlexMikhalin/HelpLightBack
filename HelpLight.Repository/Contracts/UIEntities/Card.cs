@@ -5,13 +5,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HelpLight.Repository.Contracts
 {
-    public class Organization
+    public class Card
     {
+        [Key]
+        public Guid IdCard { get; set; }
         [Required]
-        public Guid IdOrganization { get; set; }
+        public DateTime From { get; set; }
         [Required]
-        public string OrganizationName { get; set; }
-        [Required]
-        public string Address { get; set; }
+        public DateTime To { get; set; }
     }
 }

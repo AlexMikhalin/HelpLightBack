@@ -6,6 +6,21 @@ namespace HelpLight.Data.Contexts
     public class HelpLightDbContext : DbContext
     {
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Volunteer> Volunteers { get; set; }
+        public virtual DbSet<Organization> Organizations { get; set; }
+        public virtual DbSet<VolunteerOrganization> VolunteerOrganizations { get; set; }
+        public virtual DbSet<Achieve> Achieves { get; set; }
+        public virtual DbSet<AchieveVolunteer> AchieveVolunteers { get; set; }
+        public virtual DbSet<Application> Applications { get; set; }
+        public virtual DbSet<Ban> Bans { get; set; }
+        public virtual DbSet<Card> Cards { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<Karma> Karmas { get; set; }
+        public virtual DbSet<KarmaHistory> KarmaHistories { get; set; }
+        public virtual DbSet<LastWorkDate> LastWorkDates { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<WallRecord> WallRecords { get; set; }
+        public virtual DbSet<ReviewOfVolunteer> ReviewsOfVolunteers { get; set; }
 
         public HelpLightDbContext(DbContextOptions<HelpLightDbContext> options)
             : base(options)

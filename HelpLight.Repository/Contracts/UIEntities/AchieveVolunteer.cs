@@ -5,13 +5,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HelpLight.Repository.Contracts
 {
-    public class Volunteer
+    public class AchieveVolunteer
     {
         [Required]
         public Guid IdVolunteer { get; set; }
-        [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
+        public Achieve Achieve { get; set; }
     }
 }
