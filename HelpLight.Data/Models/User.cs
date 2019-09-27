@@ -13,5 +13,8 @@ namespace HelpLight.Data.Models
         public string UserName { get; set; }
         [Required]
         public string PasswordHash { get; set; }
+
+        public Volunteer Volunteer { get; set; }
+        public Organization Organization { get; set; }
     }
 }

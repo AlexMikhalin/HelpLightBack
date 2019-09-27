@@ -37,10 +37,10 @@ namespace HelpLight.Repository
                 _HLDbContext.Add(userEntity);
                 SaveChanges();
 
-                //if (!user.IsOrganization)
-                //{
-                //    AddNewUserKarma(user.Volunteer.IdVolunteer);
-                //}
+                if (user.Role.ToLower() == "volunteer")
+                {
+                    //AddNewUserKarma(user.Volunteer.IdVolunteer);
+                }
             }
             catch
             {
