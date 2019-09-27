@@ -11,6 +11,6 @@ namespace HelpLight.Repository.Contracts
         List<Data.Models.User> GetAllUsers(); // for test now
         //User GetUserById(Guid userId);
         bool IsOrganization(Guid id);
-        void LoginUser(LoginUser loginUser);
+        Guid LoginUser(LoginUser loginUser);
     }
 }

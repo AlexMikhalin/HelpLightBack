@@ -32,7 +32,7 @@ namespace HelpLight.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddUser([FromBody] User user)
+        public IActionResult RegisterUser([FromBody] User user)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace HelpLight.Web.Controllers
             {
                 try
                 {
-                    _userRepository.LoginUser(user);
+                    var loggedInUserId = _userRepository.LoginUser(user);
                     return Ok();
                 }
                 catch (Exception ex)
@@ -74,16 +74,5 @@ namespace HelpLight.Web.Controllers
             }
         }
 
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

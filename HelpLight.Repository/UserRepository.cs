@@ -105,7 +105,7 @@ namespace HelpLight.Repository
             }
         }
 
-        public void LoginUser(LoginUser loginUser)
+        public Guid LoginUser(LoginUser loginUser)
         {
             try
             {
@@ -119,7 +119,7 @@ namespace HelpLight.Repository
 
                     if (VerifyMd5Hash(md5Hash, dbuser.PasswordHash, hash))
                     {
-                        Console.WriteLine("The hashes are the same.");
+                        return dbuser.IdUser;
                     }
                     else
                     {
