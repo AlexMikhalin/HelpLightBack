@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpLight", "HelpLight\HelpLight.csproj", "{9792731B-165B-4E97-9B58-584F2ADE462D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpLight", "HelpLight\HelpLight.csproj", "{9792731B-165B-4E97-9B58-584F2ADE462D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CB3AA8DD-D24B-408E-AFF8-E66BE44AE9C0} = {CB3AA8DD-D24B-408E-AFF8-E66BE44AE9C0}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpLight.Repository", "HelpLight.Repository\HelpLight.Repository.csproj", "{CB3AA8DD-D24B-408E-AFF8-E66BE44AE9C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpLight.Repository", "HelpLight.Repository\HelpLight.Repository.csproj", "{CB3AA8DD-D24B-408E-AFF8-E66BE44AE9C0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D929D1C-DBA3-42ED-8545-65D4A5DD8BDC} = {8D929D1C-DBA3-42ED-8545-65D4A5DD8BDC}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpLight.Data", "HelpLight.Data\HelpLight.Data.csproj", "{8D929D1C-DBA3-42ED-8545-65D4A5DD8BDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpLight.Data", "HelpLight.Data\HelpLight.Data.csproj", "{8D929D1C-DBA3-42ED-8545-65D4A5DD8BDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
