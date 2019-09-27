@@ -31,17 +31,47 @@ namespace HelpLight.Web.Controllers
             return Ok(data);
         }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpPost]
+        public IActionResult AddUser([FromBody] User user)
         {
-            return "value";
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _userRepository.AddUser(user);
+                    return Ok();
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
+        [HttpGet]
+        [Route("LoginUser")]
+        public IActionResult LoginUser(LoginUser user)
         {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _userRepository.LoginUser(user);
+                    return Ok();
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         // PUT api/<controller>/5

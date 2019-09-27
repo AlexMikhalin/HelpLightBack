@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using AutoMapper;
+using HelpLight.Repository.Convertors;
 
 namespace HelpLight.Web
 {
@@ -30,14 +32,17 @@ namespace HelpLight.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection serviceCollection)
         {
+            Mapper.Initialize(m =>
+            {
+                m.AddProfile<MapperProfile>();
+            });
+
             connectionString = Configuration.GetConnectionString("DatabaseConnection");
 
             serviceCollection.AddTransient(_ => new HelpLightDbContextFactory().Create(connectionString));
 
             serviceCollection.AddTransient<IUserRepository, UserRepository>();
 
-
-            serviceCollection.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             serviceCollection.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
@@ -48,6 +53,8 @@ namespace HelpLight.Web
                     TermsOfService = "None"
                 });
             });
+
+            serviceCollection.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -23,7 +23,11 @@ namespace HelpLight.Data.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasIndex(p => p.UserName)
+                .HasName("IX_UserName");
+            });
         }
     }
 }
