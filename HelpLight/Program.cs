@@ -15,9 +15,9 @@ namespace HelpLight.Web
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args)
-              .UseKestrel()
-              .UseUrls("http://*:80")
-              .UseContentRoot(Directory.GetCurrentDirectory())
+              //.UseKestrel()
+              //.UseUrls("http://*:80")
+              //.UseContentRoot(Directory.GetCurrentDirectory())
               .UseStartup<Startup>().Build().Run();
         }
 

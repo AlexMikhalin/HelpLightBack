@@ -16,6 +16,9 @@ namespace HelpLight.Data.Models
         public Guid IdWallRecord { get; set; }
         [Required]
         public string TextContent { get; set; }
+        [Required]
+        public int Likes { get; set; }
+        public string Poster { get; set; } // TODO: for image
 
         [Required]
         public Guid IdOrganization { get; set; } // not unique

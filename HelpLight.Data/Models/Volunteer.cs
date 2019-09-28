@@ -12,8 +12,9 @@ namespace HelpLight.Data.Models
             Bans = new List<Ban>();
             Applications = new List<Application>();
             AchieveVolunteers = new List<AchieveVolunteer>();
-            VolunteerOrganizations = new List<VolunteerOrganization>();
+            //VolunteerOrganizations = new List<VolunteerOrganization>();
             Comments = new List<Comment>();
+            Curates = new List<Volunteer>();
         }
 
         [Key]
@@ -24,13 +25,13 @@ namespace HelpLight.Data.Models
         public string LastName { get; set; }
         [Required]
         public bool Banned { get; set; }
+        [Required]
+        public DateTime Birthday { get; set; }
 
         [Required]
         public Guid IdUser { get; set; } // unique
 
         public User User { get; set; }
-
-        public TimeSpan Birthday { get; set; }
 
         public Karma Karma { get; set; }
 
@@ -38,17 +39,17 @@ namespace HelpLight.Data.Models
 
         public List<Application> Applications { get; set; }
 
-        public Contacts Contacts { get; set; }
+        public Contact Contacts { get; set; }
 
         public string CuretedBy { get; set; }
 
-        public string[] Curates { get; set; }
+        public List<Volunteer> Curates { get; set; }
 
         public LastWorkDate LastWorkDate { get; set; }
         
         public List<AchieveVolunteer> AchieveVolunteers { get; set; }
 
-        public List<VolunteerOrganization> VolunteerOrganizations { get; set; }
+        //public List<VolunteerOrganization> VolunteerOrganizations { get; set; }
 
         public Card Card { get; set; }
 

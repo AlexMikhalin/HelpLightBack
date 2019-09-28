@@ -9,10 +9,11 @@ namespace HelpLight.Data.Models
     {
         [Key]
         public Guid IdApplication { get; set; }
-        public string WhyMe { get; set; }
         public bool Approved { get; set; }
         public bool Rejected { get; set; }
         public bool Recalled { get; set; }
+        public string VolunteerComment { get; set; }
+        public string OrganizationComment { get; set; }
 
         [Required]
         public Guid IdVolunteer { get; set; }
