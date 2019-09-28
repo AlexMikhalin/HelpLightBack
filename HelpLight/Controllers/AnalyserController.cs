@@ -14,8 +14,8 @@ namespace HelpLight.Web.Controllers
     public class AnalyserController : ControllerBase
     {
         [HttpGet]
-        [Route("StatisticsForEvent")]
-        public IActionResult StatisticsForEvent(Guid EventId)
+        [Route("Analyze")]
+        public IActionResult Analyze()
         {
             try
             {
@@ -42,9 +42,12 @@ namespace HelpLight.Web.Controllers
                     }
                 }
 
+                var lastMonthAverageReaction = 4.5;
+                var lsatYearAverageReaction = 4.2;
+                var countOfBurnedLastMonth = 8;
+                var countOfNewVolonteers = 23;
 
-
-                return Ok( new { VolunteersAmount , excellentReaction, goodReaction, okReaction, badReaction } );
+                return Ok( new { VolunteersAmount , excellentReaction, goodReaction, okReaction, badReaction, lastMonthAverageReaction, lsatYearAverageReaction, countOfBurnedLastMonth, countOfNewVolonteers } );
             }
             catch (Exception ex)
             {
