@@ -154,11 +154,6 @@ namespace HelpLight.Repository
             }
         }
 
-        public void RegisterUser()
-        {
-            throw new NotImplementedException();
-        }
-
         public void SaveChanges()
         {
             _HLDbContext.SaveChanges();

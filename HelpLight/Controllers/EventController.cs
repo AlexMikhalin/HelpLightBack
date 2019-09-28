@@ -101,13 +101,13 @@ namespace VaMHelper.Controllers
         [Route("upload")]
         public IActionResult PostFile(IFormFile uploadedFile)
         {
-            var filePath = Path.GetTempFileName();
             var uploads = Path.Combine(hostingEnvironment.WebRootPath, "images");
-            var fullPath = Path.Combine(uploads, GetUniqueFileName(uploadedFile.FileName));
+            var newFileName = GetUniqueFileName(uploadedFile.FileName);
+            var fullPath = Path.Combine(uploads, newFileName);
 
             uploadedFile.CopyTo(new FileStream(fullPath, FileMode.OpenOrCreate));
 
-            return Ok(fullPath);
+            return Ok(newFileName);
         }
 
         private string GetUniqueFileName(string fileName)

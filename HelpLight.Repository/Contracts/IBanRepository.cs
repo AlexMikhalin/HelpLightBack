@@ -6,7 +6,7 @@ namespace HelpLight.Repository.Contracts
 {
     public interface IBanRepository : IWorkUnit
     {
-        void BanVolunteerByOrganizationId(Guid volunteerId, Guid organizationId);
+        void BanVolunteerByOrganization(Ban ban);
         void BanVolunteerInAllOrganizations(Guid volunteerId);
         void UnBanVolunteerByOrganizationId(Guid volunteerId, Guid organizationId);
         List<Volunteer> GetAllBannedVolunteersByOrganizationId(Guid organizationId);

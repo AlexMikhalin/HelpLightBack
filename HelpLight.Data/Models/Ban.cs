@@ -12,13 +12,13 @@ namespace HelpLight.Data.Models
         public Guid IdBan { get; set; }
         [Required]
         public string Reason { get; set; }
-        [Required]
-        public DateTime DateFrom { get; set; }
-        [Required]
-        public DateTime DateTo { get; set; }
 
         [Required]
         public Guid IdVolunteer { get; set; }
         public Volunteer Volunteer { get; set; }
+
+        [Required]
+        public Guid IdOrganization { get; set; }
+        public Organization Organization { get; set; }
     }
 }
