@@ -15,6 +15,7 @@ namespace HelpLight.Data.Models
             VolunteerOrganizations = new List<VolunteerOrganization>();
             Comments = new List<Comment>();
             Curates = new List<Volunteer>();
+            Skills = new List<Skill>();
         }
 
         [Key]
@@ -54,6 +55,8 @@ namespace HelpLight.Data.Models
         public Card Card { get; set; }
 
         public List<Comment> Comments { get; set; }
+
+        public List<Skill> Skills { get; set; }
 
         public List<ReviewOfVolunteer> ReviewsOfVolunteer { get; set; }
     }

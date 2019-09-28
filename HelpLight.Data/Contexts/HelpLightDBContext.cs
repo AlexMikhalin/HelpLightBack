@@ -22,6 +22,7 @@ namespace HelpLight.Data.Contexts
         public virtual DbSet<WallRecord> WallRecords { get; set; }
         public virtual DbSet<ReviewOfVolunteer> ReviewsOfVolunteers { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Skill> Skills { get; set; }
 
         public HelpLightDbContext(DbContextOptions<HelpLightDbContext> options)
             : base(options)
@@ -44,6 +45,10 @@ namespace HelpLight.Data.Contexts
                 entity.HasIndex(p => p.UserName)
                 .HasName("IX_UserName");
             });
+
+            modelBuilder.Entity<Skill>()
+                .HasOne(p => p.Volunteer)
+                .WithMany(e => e.Skills);
 
             modelBuilder.Entity<User>()
                 .HasOne(p => p.Volunteer)

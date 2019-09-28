@@ -56,6 +56,9 @@ namespace HelpLight.Repository.Convertors
 
             CreateMap<Data.Models.Contact, Contracts.Contact>()
                 .ReverseMap();
+
+            CreateMap<Data.Models.Skill, Contracts.Skill>()
+                .ReverseMap();
         }
     }
 }

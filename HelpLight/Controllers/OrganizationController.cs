@@ -8,10 +8,12 @@ using HelpLight.Repository.Contracts;
 using System.Drawing;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Cors;
 
 namespace VaMHelper.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("MyPolicy")]
     [ApiController]
     public class OrganizationController : ControllerBase
     {

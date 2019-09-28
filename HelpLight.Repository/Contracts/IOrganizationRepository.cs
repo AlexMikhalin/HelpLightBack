@@ -8,5 +8,6 @@ namespace HelpLight.Repository.Contracts
     {
         Organization GetOrganizationInfoById(Guid id);
         void UpdateOrganizationInfo(Organization Organization);
+        void ValidateOrganization(Guid userId, Guid organizationId);
     }
 }

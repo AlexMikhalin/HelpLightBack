@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HelpLight.Repository.Contracts;
+using Microsoft.AspNetCore.Cors;
 
 namespace VaMHelper.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("MyPolicy")]
     [ApiController]
     public class KarmaController : ControllerBase
     {

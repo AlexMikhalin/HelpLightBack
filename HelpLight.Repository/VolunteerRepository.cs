@@ -72,5 +72,41 @@ namespace HelpLight.Repository
             }
         }
 
+        public void AddSkillsToVolunteer(Guid volunteerId, List<Skill> skills)
+        {
+            try
+            {
+                var volunteerEntity = GetVolunteerEntity(volunteerId);
+
+                var skillsEntities = Mapper.Map<List<Data.Models.Skill>>(skills);
+
+                volunteerEntity.Skills.AddRange(skillsEntities);
+                SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public void ValidateVolunteer(Guid userId, Guid volunteerId)
+        {
+            try
+            {
+                var vol = _VaODbContext.Volunteers.Where(o => o.IdVolunteer == volunteerId).FirstOrDefault();
+
+                if(vol != null)
+                {
+                    if(!(vol.IdUser == userId))
+                    {
+                        throw new Exception("You don't know secret ...");
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace HelpLight.Repository.Contracts
         public DateTime Birthday { get; set; }
         public Karma Karma { get; set; }
         public Contact Contacts { get; set; }
+        public List<Skill> Skills { get; set; }
         public string CuretedBy { get; set; }
     }
 }

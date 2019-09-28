@@ -7,16 +7,22 @@ using AutoMapper;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace HelpLight.Repository
 {
     public class UserRepository : IUserRepository
     {
         private readonly HelpLightDbContext _HLDbContext;
+        private readonly IVolunteerReporitory _volunteerReporitory;
+        private readonly IOrganizationRepository _organizationRepository;
 
-        public UserRepository(HelpLightDbContext _HLDbContext)
+        public UserRepository(HelpLightDbContext _HLDbContext, IVolunteerReporitory _volunteerReporitory,
+                              IOrganizationRepository _organizationRepository)
         {
             this._HLDbContext = _HLDbContext;
+            this._volunteerReporitory = _volunteerReporitory;
+            this._organizationRepository = _organizationRepository;
         }
 
         public void AddUser(Contracts.User user)
@@ -62,20 +68,20 @@ namespace HelpLight.Repository
             }
         }
 
-        public List<User> GetAllUsers()
+        public Contracts.User GetUser(Guid userId)
         {
-            List<User> users = new List<User>();
-
             try
             {
-                users = _HLDbContext.Users.ToList();
+                var dbuser = _HLDbContext.Users
+                                        .Where(u => u.IdUser == userId).Include(u => u.Volunteer).Include(u => u.Organization)
+                                        .FirstOrDefault();
+                var info = Mapper.Map<Contracts.User>(dbuser);
+                return info;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
-            return users;
         }
 
         public bool IsOrganization(Guid id)

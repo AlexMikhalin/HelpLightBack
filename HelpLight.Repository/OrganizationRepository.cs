@@ -75,5 +75,25 @@ namespace HelpLight.Repository
                 throw;
             }
         }
+
+        public void ValidateOrganization(Guid userId, Guid organizationId)
+        {
+            try
+            {
+                var org = _HelpLightDbContext.Organizations.Where(o => o.IdOrganization == organizationId).FirstOrDefault();
+
+                if (org != null)
+                {
+                    if (!(org.IdUser == userId))
+                    {
+                        throw new Exception("You don't know secret ...");
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

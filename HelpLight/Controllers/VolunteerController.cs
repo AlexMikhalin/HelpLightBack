@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using HelpLight.Repository.Contracts;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Cors;
 
 namespace VaMHelper.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("MyPolicy")]
     [ApiController]
     public class VolunteerController : ControllerBase
     {
@@ -43,6 +45,16 @@ namespace VaMHelper.Controllers
         [Route("UpdateVolunteerInfo")]
         public IActionResult Post([FromBody] Volunteer volunteer)
         {
+            try
+            {
+                var userId = Request.Headers["token"].ToString();
+                _volunteerRepository.ValidateVolunteer(new Guid(userId), volunteer.IdVolunteer);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -83,5 +95,30 @@ namespace VaMHelper.Controllers
                       + Guid.NewGuid().ToString().Substring(0, 4)
                       + Path.GetExtension(fileName);
         }
+        [HttpPut]
+        [Route("AddSkillsToVolunteer")]
+        public IActionResult Put(Guid volunteerId, [FromBody] List<Skill> skills)
+        {
+            try
+            {
+                var userId = Request.Headers["token"].ToString();
+                _volunteerRepository.ValidateVolunteer(new Guid(userId), volunteerId);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            try
+            {
+                _volunteerRepository.AddSkillsToVolunteer(volunteerId, skills);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }
