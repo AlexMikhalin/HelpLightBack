@@ -30,7 +30,7 @@ namespace HelpLight.Web.Controllers
                 for (var i = 0; i < VolunteersAmount; i++)
                 {
                     Random random2 = new Random();
-                    int reaction = random2.Next(1, 4);
+                    int reaction = random2.Next(1, 5);
 
 
                     switch(reaction)
