@@ -17,7 +17,10 @@ namespace HelpLight.Data.Models
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
         public string WorkDescription { get; set; }
-        public int PeopleRequired { get; set; }
+
+        public string Poster { get; set; }
+
+        public PeopleRequired[] PeopleRequired { get; set; }
         [Required]
         public int Tokens { get; set; }
 

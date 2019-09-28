@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.ComponentModel.DataAnnotations;
 
 namespace HelpLight.Data.Models
 {
@@ -16,11 +14,25 @@ namespace HelpLight.Data.Models
         }
 
         [Key]
-        public Guid IdOrganization { get; set; }
+        public Guid Id { get; set; }
         [Required]
-        public string OrganizationName { get; set; }
+        public string Name { get; set; }
         [Required]
         public string Address { get; set; }
+
+        public string Avatar { get; set; }
+
+        public string Email { get; set; }
+
+        public string Desc { get; set; }
+
+        public string Title { get; set; }
+
+        public string City { get; set; }
+
+        public string[] Tags { get; set; }
+
+        public string Phone { get; set; }
 
         public Guid IdUser { get; set; } // unique
         public User User { get; set; }
