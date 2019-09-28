@@ -9,8 +9,8 @@ namespace HelpLight.Repository.Contracts
     {
         [Required]
         public Guid IdApplication { get; set; }
-        [Required]
-        public string WhyMe { get; set; }
+        public string VolunteerComment { get; set; }
+        public string OrganizationComment { get; set; }
 
         public bool Approved { get; set; }
         public bool Rejected { get; set; }

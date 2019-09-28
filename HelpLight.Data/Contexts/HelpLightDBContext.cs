@@ -21,6 +21,7 @@ namespace HelpLight.Data.Contexts
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<WallRecord> WallRecords { get; set; }
         public virtual DbSet<ReviewOfVolunteer> ReviewsOfVolunteers { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
 
         public HelpLightDbContext(DbContextOptions<HelpLightDbContext> options)
             : base(options)

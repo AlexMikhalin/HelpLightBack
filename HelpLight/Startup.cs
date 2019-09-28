@@ -42,6 +42,16 @@ namespace HelpLight.Web
             serviceCollection.AddTransient(_ => new HelpLightDbContextFactory().Create(connectionString));
 
             serviceCollection.AddTransient<IUserRepository, UserRepository>();
+            serviceCollection.AddTransient<IVolunteerReporitory, VolunteerRepository>();
+            serviceCollection.AddTransient<IOrganizationRepository, OrganizationRepository>();
+            serviceCollection.AddTransient<IApplicationRepository, ApplicationRepository>();
+            serviceCollection.AddTransient<IBanRepository, BanRepository>();
+            serviceCollection.AddTransient<IEventRepository, EventRepository>();
+            serviceCollection.AddTransient<IKarmaRepository, KarmaRepository>();
+            serviceCollection.AddTransient<IWallRepository, WallRepository>();
+            serviceCollection.AddTransient<ICommentRepository, CommentRepository>();
+            serviceCollection.AddTransient<ICardRepository, CarRepository>();
+            serviceCollection.AddTransient<IReviewOfVolunteerRepository, ReviewOfVolunteerRepository>();
 
             serviceCollection.AddSwaggerGen(c =>
             {
