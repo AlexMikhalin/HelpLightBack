@@ -27,6 +27,7 @@ namespace HelpLight.Data.Models
 
         [Required]
         public Guid IdUser { get; set; } // unique
+
         public User User { get; set; }
 
         public Karma Karma { get; set; }
@@ -35,8 +36,14 @@ namespace HelpLight.Data.Models
 
         public List<Application> Applications { get; set; }
 
-        public LastWorkDate LastWorkDate { get; set; }
+        public Contacts Contacts { get; set; }
 
+        public string CuretedBy { get; set; }
+
+        public string[] Curates { get; set; }
+
+        public LastWorkDate LastWorkDate { get; set; }
+        
         public List<AchieveVolunteer> AchieveVolunteers { get; set; }
 
         public List<VolunteerOrganization> VolunteerOrganizations { get; set; }

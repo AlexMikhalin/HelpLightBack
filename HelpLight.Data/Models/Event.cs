@@ -24,6 +24,8 @@ namespace HelpLight.Data.Models
         [Required]
         public int Tokens { get; set; }
 
+        public Applies Applies { get; set; }
+
         [Required]
         public Guid IdOrganization { get; set; }
         public Organization Organization { get; set; }

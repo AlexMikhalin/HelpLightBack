@@ -12,6 +12,10 @@ namespace HelpLight.Data.Models
         [Required]
         public string CommentText { get; set; }
 
+        public string AuthorName { get; set; }
+
+        public string AuthorAvatar { get; set; }
+
         [Required]
         public Guid IdVolunteer { get; set; } // not unique
         public Volunteer Volunteer { get; set; }
