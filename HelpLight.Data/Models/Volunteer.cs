@@ -12,7 +12,7 @@ namespace HelpLight.Data.Models
             Bans = new List<Ban>();
             Applications = new List<Application>();
             AchieveVolunteers = new List<AchieveVolunteer>();
-            //VolunteerOrganizations = new List<VolunteerOrganization>();
+            VolunteerOrganizations = new List<VolunteerOrganization>();
             Comments = new List<Comment>();
             Curates = new List<Volunteer>();
         }
@@ -49,7 +49,7 @@ namespace HelpLight.Data.Models
         
         public List<AchieveVolunteer> AchieveVolunteers { get; set; }
 
-        //public List<VolunteerOrganization> VolunteerOrganizations { get; set; }
+        public List<VolunteerOrganization> VolunteerOrganizations { get; set; }
 
         public Card Card { get; set; }
 

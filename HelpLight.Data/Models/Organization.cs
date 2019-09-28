@@ -9,7 +9,7 @@ namespace HelpLight.Data.Models
         public Organization()
         {
             Events = new List<Event>();
-            //VolunteerOrganizations = new List<VolunteerOrganization>();
+            VolunteerOrganizations = new List<VolunteerOrganization>();
             WallRecords = new List<WallRecord>();
         }
 
@@ -32,7 +32,7 @@ namespace HelpLight.Data.Models
         public User User { get; set; }
         public List<Event> Events { get; set; }
 
-        //public List<VolunteerOrganization> VolunteerOrganizations { get; set; }
+        public List<VolunteerOrganization> VolunteerOrganizations { get; set; }
         public List<WallRecord> WallRecords { get; set; }
     }
 }

@@ -52,7 +52,7 @@ namespace HelpLight.Repository
         {
             try
             {
-                Karma newUserKarma = new Karma(volunteerId);
+                var newUserKarma = new Data.Models.Karma(volunteerId);
                 _HLDbContext.Add(newUserKarma);
                 SaveChanges();
             }
