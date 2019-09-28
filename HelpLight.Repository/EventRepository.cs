@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Event = HelpLight.Data.Models.Event;
 using AutoMapper;
-using HelpLight.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HelpLight.Repository
@@ -110,7 +109,7 @@ namespace HelpLight.Repository
         {
             try
             {
-                var events = _VaODbContext.Events.ToList();
+                var events = _VaODbContext.Events.Include(e => e.PeopleRequired).ToList();
                 return Mapper.Map<List<Contracts.Event>>(events);
             }
             catch
@@ -118,19 +117,6 @@ namespace HelpLight.Repository
                 throw;
             }
         }
-
-        //List<Contracts.Volunteer> GetVolunteersAppliedForEvent(Guid eventId)
-        //{
-        //    try
-        //    {
-        //        var applications = _VaODbContext.Applications.Where(e => e.IdEvent == eventId).ToList();
-        //        return Mapper.Map<List<Contracts.Application>>(applications);
-        //    }
-        //    catch
-        //    {
-        //        throw;
-        //    }
-        //}
 
         public List<Contracts.Event> GetAllEventsByVolunteerId(Guid volunteerId)
         {

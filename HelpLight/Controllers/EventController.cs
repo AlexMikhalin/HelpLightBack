@@ -40,21 +40,6 @@ namespace VaMHelper.Controllers
             }
         }
 
-        //[HttpGet]
-        //[Route("GetVolunteersAppliedForEvent")]
-        //public IActionResult GetVolunteersAppliedForEvent(Guid id)
-        //{
-        //    try
-        //    {
-        //        var orgEvents = _eventRepository.GetVolunteersAppliedForEvent(id, false);
-        //        return Ok(orgEvents);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
-
         [HttpGet]
         [Route("GetAllEvents")]
         public IActionResult GetAllEvents()

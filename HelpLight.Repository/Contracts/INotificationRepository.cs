@@ -6,5 +6,7 @@ namespace HelpLight.Repository.Contracts
 {
     public interface INotificationRepository : IWorkUnit
     {
+        void AddNotification(Notification notification);
+        List<Notification> GetNotifications(Guid userId);
     }
 }
