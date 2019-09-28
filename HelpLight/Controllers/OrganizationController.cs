@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HelpLight.Repository.Contracts;
+using System.Drawing;
 
 namespace VaMHelper.Controllers
 {
@@ -57,5 +58,14 @@ namespace VaMHelper.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("upload")]
+        public void PostFile(IFormFile uploadedFile)
+        {
+            const string Filename = @"D:\proj\HelpLightBack\HelpLight\www\image.jpg";
+            Image image = Image.FromStream(uploadedFile.OpenReadStream(), true, true);
+            image.Dispose();
+            image.Save(Filename);
+        }
     }
 }
