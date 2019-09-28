@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HelpLight.Repository.Contracts;
 using System.Drawing;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace VaMHelper.Controllers
 {
@@ -14,10 +16,12 @@ namespace VaMHelper.Controllers
     public class OrganizationController : ControllerBase
     {
         private readonly IOrganizationRepository _organizationRepository;
+        private readonly IHostingEnvironment hostingEnvironment;
 
-        public OrganizationController(IOrganizationRepository _organizationRepository)
+        public OrganizationController(IOrganizationRepository _organizationRepository, IHostingEnvironment environment)
         {
             this._organizationRepository = _organizationRepository;
+            hostingEnvironment = environment;
         }
 
         // GET: api/Organization
@@ -60,12 +64,24 @@ namespace VaMHelper.Controllers
 
         [HttpPost]
         [Route("upload")]
-        public void PostFile(IFormFile uploadedFile)
+        public IActionResult PostFile(IFormFile uploadedFile)
         {
-            const string Filename = @"D:\proj\HelpLightBack\HelpLight\www\image.jpg";
-            Image image = Image.FromStream(uploadedFile.OpenReadStream(), true, true);
-            image.Dispose();
-            image.Save(Filename);
+            var filePath = Path.GetTempFileName();
+            var uploads = Path.Combine(hostingEnvironment.WebRootPath, "images");
+            var fullPath = Path.Combine(uploads, GetUniqueFileName(uploadedFile.FileName));
+
+            uploadedFile.CopyTo(new FileStream(fullPath, FileMode.OpenOrCreate));
+
+            return Ok(fullPath);
+        }
+
+        private string GetUniqueFileName(string fileName)
+        {
+            fileName = Path.GetFileName(fileName);
+            return Path.GetFileNameWithoutExtension(fileName)
+                      + "_"
+                      + Guid.NewGuid().ToString().Substring(0, 4)
+                      + Path.GetExtension(fileName);
         }
     }
 }
