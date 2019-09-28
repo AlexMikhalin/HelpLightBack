@@ -9,16 +9,17 @@ namespace HelpLight.Data.Models
     public class Ban
     {
         [Key]
-        public Guid IdBan { get; set; }
+        public string IdBan { get; set; }
+
         [Required]
         public string Reason { get; set; }
 
-        [Required]
+        //[Required]
         public Guid IdVolunteer { get; set; }
         public Volunteer Volunteer { get; set; }
 
-        [Required]
-        public Guid IdOrganization { get; set; }
-        public Organization Organization { get; set; }
+        //[Required]
+        //public Guid IdOrganization { get; set; }
+        //public Organization Organization { get; set; }
     }
 }

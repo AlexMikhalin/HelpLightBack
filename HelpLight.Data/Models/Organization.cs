@@ -34,5 +34,7 @@ namespace HelpLight.Data.Models
 
         public List<VolunteerOrganization> VolunteerOrganizations { get; set; }
         public List<WallRecord> WallRecords { get; set; }
+
+        public List<Ban> Bans { get; set; }
     }
 }

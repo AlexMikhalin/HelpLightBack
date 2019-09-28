@@ -102,8 +102,23 @@ namespace VaMHelper.Controllers
         {
             try
             {
-                _applicationRepository.GetApplicationsByVolunteerId(volunteerId);
-                return Ok(volunteerId);
+                var applications = _applicationRepository.GetApplicationsByVolunteerId(volunteerId);
+                return Ok(applications);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("GetApplicationsByEventId")]
+        public IActionResult GetApplicationsByEventId(Guid eventId)
+        {
+            try
+            {
+                var applications = _applicationRepository.GetApplicationsByEventId(eventId);
+                return Ok(applications);
             }
             catch (Exception ex)
             {
@@ -113,12 +128,27 @@ namespace VaMHelper.Controllers
 
         [HttpGet]
         [Route("RecallApplication")]
-        public IActionResult RecallApplication(Guid volunteerId)
+        public IActionResult RecallApplication(Guid applicationId)
         {
             try
             {
-                _applicationRepository.RecallApplication(volunteerId);
-                return Ok(volunteerId);
+                _applicationRepository.RecallApplication(applicationId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("WasOnEvent")]
+        public IActionResult WasOnEvent(Guid applicationId)
+        {
+            try
+            {
+                _applicationRepository.WasOnEvent(applicationId);
+                return Ok();
             }
             catch (Exception ex)
             {

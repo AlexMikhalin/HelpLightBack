@@ -28,6 +28,8 @@ namespace HelpLight.Data.Models
         public bool Banned { get; set; }
         [Required]
         public DateTime Birthday { get; set; }
+        public string About { get; set; }
+        public string Avatar { get; set; }
 
         [Required]
         public Guid IdUser { get; set; } // unique

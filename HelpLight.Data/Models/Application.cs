@@ -12,6 +12,8 @@ namespace HelpLight.Data.Models
         public bool Approved { get; set; }
         public bool Rejected { get; set; }
         public bool Recalled { get; set; }
+
+        public bool WasOnEnent { get; set; }
         public string VolunteerComment { get; set; }
         public string OrganizationComment { get; set; }
 

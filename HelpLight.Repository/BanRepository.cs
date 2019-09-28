@@ -55,7 +55,7 @@ namespace HelpLight.Repository
             {
                 //var volunteersEntities = _VaODbContext.Volunteers.Where(v => v.Bans.Any());
 
-                var b = _VaODbContext.Bans.Where(c => c.IdOrganization == organizationId).ToList();
+                //var b = _VaODbContext.Bans.Where(c => c.IdOrganization == organizationId).ToList();
                 return new List<Volunteer>();
             }
             catch
@@ -69,7 +69,7 @@ namespace HelpLight.Repository
             try
             {
                 var deletingBan = _VaODbContext.Bans
-                                            .Where(b => b.IdVolunteer == volunteerId && b.IdOrganization == orgId)
+                                            .Where(b => b.IdVolunteer == volunteerId /*&& b.IdOrganization == orgId*/)
                                             .FirstOrDefault(); 
 
                 _VaODbContext.Remove(deletingBan);

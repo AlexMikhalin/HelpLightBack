@@ -14,6 +14,8 @@ namespace HelpLight.Repository.Contracts
         [Required]
         public string LastName { get; set; }
         public bool Banned { get; set; }
+        public string About { get; set; }
+        public string Avatar { get; set; }
         public DateTime Birthday { get; set; }
         public Karma Karma { get; set; }
         public Contact Contacts { get; set; }

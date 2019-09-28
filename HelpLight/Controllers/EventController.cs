@@ -25,7 +25,8 @@ namespace VaMHelper.Controllers
         }
 
         // GET: api/Events/5
-        [HttpGet, Route("{id}")]
+        [HttpGet]
+        [Route("GetAllOrganizationEvents")]
         public IActionResult GetAllOrganizationEvents(Guid id)
         {
             try
@@ -39,13 +40,43 @@ namespace VaMHelper.Controllers
             }
         }
 
+        //[HttpGet]
+        //[Route("GetVolunteersAppliedForEvent")]
+        //public IActionResult GetVolunteersAppliedForEvent(Guid id)
+        //{
+        //    try
+        //    {
+        //        var orgEvents = _eventRepository.GetVolunteersAppliedForEvent(id, false);
+        //        return Ok(orgEvents);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
+
         [HttpGet]
-        [Route("GetAllOrganizationEvents")]
-        public IActionResult GetVolunteersAppliedForEvent(Guid id, [FromBody] bool onlyApproved)
+        [Route("GetAllEvents")]
+        public IActionResult GetAllEvents()
         {
             try
             {
-                var orgEvents = _eventRepository.GetVolunteersAppliedForEvent(id, onlyApproved);
+                var orgEvents = _eventRepository.GetAllEvents();
+                return Ok(orgEvents);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("GetAllEventsByVolunteerId")]
+        public IActionResult GetAllEventsByVolunteerId(Guid volunteerId)
+        {
+            try
+            {
+                var orgEvents = _eventRepository.GetAllEventsByVolunteerId(volunteerId);
                 return Ok(orgEvents);
             }
             catch (Exception ex)

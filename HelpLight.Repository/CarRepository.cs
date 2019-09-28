@@ -10,13 +10,13 @@ using HelpLight.Data.Contexts;
 
 namespace HelpLight.Repository
 {
-    public class CarRepository : ICardRepository
+    public class CardRepository : ICardRepository
     {
         private readonly HelpLightDbContext _VaODbContext;
         private readonly ICardRepository _cardRepository;
         private readonly IVolunteerReporitory _volunteerReporitory;
 
-        public CarRepository(HelpLightDbContext _VaODbContext,
+        public CardRepository(HelpLightDbContext _VaODbContext,
                              ICardRepository _cardRepository, IVolunteerReporitory _volunteerReporitory)
         {
             this._VaODbContext = _VaODbContext;

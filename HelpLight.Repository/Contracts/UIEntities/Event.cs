@@ -15,10 +15,18 @@ namespace HelpLight.Repository.Contracts
         public DateTime DateTo { get; set; }
         [Required]
         public string WorkDescription { get; set; }
-        [Required]
-        public int PeopleRequired { get; set; }
-        [Required]
+        public string Type { get; set; }
+
+        public List<PeopleRequired> PeopleRequired { get; set; }
+
+        public List<Application> Applications { get; set; }
+        public List<Tag> Tags { get; set; }
+
         public int Tokens { get; set; }
+        public string Poster { get; set; }
+        public string Title { get; set; }
+
+        public string Location { get; set; }
 
         [Required]
         public Guid IdOrganization { get; set; }
