@@ -47,7 +47,15 @@ namespace HelpLight.Web.Controllers
                 var countOfBurnedLastMonth = 8;
                 var countOfNewVolonteers = 23;
 
-                return Ok( new { VolunteersAmount , excellentReaction, goodReaction, okReaction, badReaction, lastMonthAverageReaction, lsatYearAverageReaction, countOfBurnedLastMonth, countOfNewVolonteers } );
+                return Ok( new { VolunteersAmount ,
+                                excellentReaction,
+                                goodReaction,
+                                okReaction,
+                                badReaction,
+                                lastMonthAverageReaction,
+                                lsatYearAverageReaction,
+                                countOfBurnedLastMonth,
+                                countOfNewVolonteers } );
             }
             catch (Exception ex)
             {
