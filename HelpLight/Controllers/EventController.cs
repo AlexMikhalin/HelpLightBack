@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HelpLight.Repository.Contracts;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace VaMHelper.Controllers
 {
@@ -13,10 +15,11 @@ namespace VaMHelper.Controllers
     public class EventController : ControllerBase
     {
         private readonly IEventRepository _eventRepository;
-
-        public EventController(IEventRepository _eventRepository)
+        private readonly IHostingEnvironment hostingEnvironment;
+        public EventController(IEventRepository _eventRepository, IHostingEnvironment environment)
         {
             this._eventRepository = _eventRepository;
+            hostingEnvironment = environment;
         }
 
         // GET: api/Events/5
@@ -90,6 +93,28 @@ namespace VaMHelper.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpPost]
+        [Route("upload")]
+        public IActionResult PostFile(IFormFile uploadedFile)
+        {
+            var filePath = Path.GetTempFileName();
+            var uploads = Path.Combine(hostingEnvironment.WebRootPath, "images");
+            var fullPath = Path.Combine(uploads, GetUniqueFileName(uploadedFile.FileName));
+
+            uploadedFile.CopyTo(new FileStream(fullPath, FileMode.OpenOrCreate));
+
+            return Ok(fullPath);
+        }
+
+        private string GetUniqueFileName(string fileName)
+        {
+            fileName = Path.GetFileName(fileName);
+            return Path.GetFileNameWithoutExtension(fileName)
+                      + "_"
+                      + Guid.NewGuid().ToString().Substring(0, 4)
+                      + Path.GetExtension(fileName);
         }
     }
 }

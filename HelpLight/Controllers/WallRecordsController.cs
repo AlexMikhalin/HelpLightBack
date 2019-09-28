@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HelpLight.Repository.Contracts;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace VaMHelper.Controllers
 {
@@ -13,10 +15,12 @@ namespace VaMHelper.Controllers
     public class WallRecordsController : ControllerBase
     {
         private readonly IWallRepository _wallRepository;
+        private readonly IHostingEnvironment hostingEnvironment;
 
-        public WallRecordsController(IWallRepository _wallRepository)
+        public WallRecordsController(IWallRepository _wallRepository, IHostingEnvironment environment)
         {
             this._wallRepository = _wallRepository;
+            hostingEnvironment = environment;
         }
 
         [HttpPost]
@@ -52,6 +56,28 @@ namespace VaMHelper.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpPost]
+        [Route("upload")]
+        public IActionResult PostFile(IFormFile uploadedFile)
+        {
+            var filePath = Path.GetTempFileName();
+            var uploads = Path.Combine(hostingEnvironment.WebRootPath, "images");
+            var fullPath = Path.Combine(uploads, GetUniqueFileName(uploadedFile.FileName));
+
+            uploadedFile.CopyTo(new FileStream(fullPath, FileMode.OpenOrCreate));
+
+            return Ok(fullPath);
+        }
+
+        private string GetUniqueFileName(string fileName)
+        {
+            fileName = Path.GetFileName(fileName);
+            return Path.GetFileNameWithoutExtension(fileName)
+                      + "_"
+                      + Guid.NewGuid().ToString().Substring(0, 4)
+                      + Path.GetExtension(fileName);
         }
 
     }
