@@ -30,6 +30,8 @@ namespace HelpLight.Data.Models
 
         public User User { get; set; }
 
+        public TimeSpan Birthday { get; set; }
+
         public Karma Karma { get; set; }
 
         public List<Ban> Bans { get; set; }
