@@ -27,8 +27,16 @@ namespace HelpLight.Web.Controllers
         //[Route("GetAllUsers")]
         public IActionResult GetAllUsers()
         {
-            var data = _userRepository.GetAllUsers();
-            return Ok(data);
+            try
+            {
+                var data = _userRepository.GetAllUsers();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]

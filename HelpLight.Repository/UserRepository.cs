@@ -58,7 +58,7 @@ namespace HelpLight.Repository
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw ex;
             }
 
             return users;
