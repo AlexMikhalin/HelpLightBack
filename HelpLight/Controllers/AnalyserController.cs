@@ -19,29 +19,11 @@ namespace HelpLight.Web.Controllers
         {
             try
             {
-                Random random = new Random();
-                int VolunteersAmount = random.Next(100, 300);
-
-                var excellentReaction = 0;
-                var goodReaction = 0;
-                var okReaction = 0;
-                var badReaction = 0;
-
-                for (var i = 0; i < VolunteersAmount; i++)
-                {
-                    Random random2 = new Random();
-                    int reaction = random2.Next(1, 5);
-
-
-                    switch(reaction)
-                    {
-                        case 1:    excellentReaction++;  break;
-                        case 2:    goodReaction++;   break;
-                        case 3:    okReaction++; break;
-                        case 4:    badReaction++;  break;
-                    }
-                }
-
+                int VolunteersAmount = 294;
+                var excellentReaction = 78;
+                var goodReaction = 86;
+                var okReaction = 75;
+                var badReaction = 55;
                 var lastMonthAverageReaction = 4.5;
                 var lsatYearAverageReaction = 4.2;
                 var countOfBurnedLastMonth = 8;
