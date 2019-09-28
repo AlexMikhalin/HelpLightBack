@@ -39,8 +39,22 @@ namespace HelpLight.Repository
 
                 if (user.Role.ToLower() == "volunteer")
                 {
-                    //AddNewUserKarma(user.Volunteer.IdVolunteer);
+                    AddNewUserKarma(user.Volunteer.IdVolunteer);
                 }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        private void AddNewUserKarma(Guid volunteerId)
+        {
+            try
+            {
+                Karma newUserKarma = new Karma(volunteerId);
+                _HLDbContext.Add(newUserKarma);
+                SaveChanges();
             }
             catch
             {
