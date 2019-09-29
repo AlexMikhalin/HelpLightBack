@@ -68,6 +68,9 @@ namespace HelpLight.Repository.Convertors
 
             CreateMap<Data.Models.PeopleRequired, Contracts.PeopleRequired>()
                 .ReverseMap();
+
+            CreateMap<Data.Models.VolunteerEventReview, Contracts.VolunteerEventReview>()
+                .ReverseMap();
         }
     }
 }

@@ -12,23 +12,23 @@ namespace HelpLight.Controllers
     [Route("api/[controller]")]
     [EnableCors("MyPolicy")]
     [ApiController]
-    public class KarmaController : ControllerBase
+    public class VolunteerEventReviewController : ControllerBase
     {
-        private readonly IKarmaRepository _karmaRepository;
+        private readonly IVolunteerEventReviewRepository _volunteerEventReviewRepository;
 
-        public KarmaController(IKarmaRepository _karmaRepository)
+        public VolunteerEventReviewController(IVolunteerEventReviewRepository _volunteerEventReviewRepository)
         {
-            this._karmaRepository = _karmaRepository;
+            this._volunteerEventReviewRepository = _volunteerEventReviewRepository;
         }
 
-        // GET: api/Events/5
-        [HttpGet("{id}")]
-        public IActionResult GetMyKarmaHistory(Guid id)
+        [HttpGet]
+        [Route("GetEventReviews")]
+        public IActionResult GetEventReviews(Guid eventId)
         {
             try
             {
-                var history = _karmaRepository.GetMyKarmaHistory(id);
-                return Ok(history);
+                var reviews = _volunteerEventReviewRepository.GetEventReviews(eventId);
+                return Ok(reviews);
             }
             catch (Exception ex)
             {
@@ -36,20 +36,20 @@ namespace HelpLight.Controllers
             }
         }
 
-        // POST: api/Events
         [HttpPost]
-        public IActionResult Post(Guid volunteerId, [FromBody] KarmaHistory history)
+        [Route("ReviewEvent")]
+        public IActionResult Post([FromBody] VolunteerEventReview review)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _karmaRepository.AddKarma(volunteerId, history.Gained, history.Reason, history.IdEvent);
+                    _volunteerEventReviewRepository.ReviewEvent(review);
                     return Ok();
                 }
                 catch (Exception ex)
                 {
-                    return BadRequest(ex);
+                    return BadRequest(ex.Message);
                 }
             }
             else

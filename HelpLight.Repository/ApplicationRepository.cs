@@ -5,6 +5,7 @@ using Application = HelpLight.Data.Models.Application;
 using AutoMapper;
 using HelpLight.Repository.Contracts;
 using HelpLight.Data.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace HelpLight.Repository
 {
@@ -164,7 +165,7 @@ namespace HelpLight.Repository
         {
             try
             {
-                var apps = _VaODbContext.Applications.Where(a => a.IdEvent == eventId).ToList();
+                var apps = _VaODbContext.Applications.Where(a => a.IdEvent == eventId).Include(t => t.Volunteer).ToList();
                 return Mapper.Map<List<Contracts.Application>>(apps);
             }
             catch

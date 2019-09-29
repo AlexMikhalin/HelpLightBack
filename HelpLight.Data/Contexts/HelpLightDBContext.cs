@@ -26,6 +26,7 @@ namespace HelpLight.Data.Contexts
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<PeopleRequired> PeopleRequireds { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<VolunteerEventReview> VolunteerEventReviews { get; set; }
 
         public HelpLightDbContext(DbContextOptions<HelpLightDbContext> options)
             : base(options)

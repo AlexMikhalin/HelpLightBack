@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using HelpLight.Repository.Contracts;
 using Microsoft.AspNetCore.Cors;
 
-namespace VaMHelper.Controllers
+namespace HelpLight.Web.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("MyPolicy")]

@@ -12,9 +12,9 @@ namespace HelpLight.Repository
     {
         private readonly HelpLightDbContext _VaODbContext;
 
-        public NotificationRepository(HelpLightDbContext OrganizationsAndVolunteersDbContext)
+        public NotificationRepository(HelpLightDbContext _VaODbContext)
         {
-            this._VaODbContext = OrganizationsAndVolunteersDbContext;
+            this._VaODbContext = _VaODbContext;
         }
 
         public void AddNotification(Notification notification)

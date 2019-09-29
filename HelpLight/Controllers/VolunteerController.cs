@@ -9,7 +9,7 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Cors;
 
-namespace VaMHelper.Controllers
+namespace HelpLight.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("MyPolicy")]

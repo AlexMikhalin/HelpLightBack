@@ -19,6 +19,8 @@ namespace HelpLight.Data.Models
 
         public string Type { get; set; }
 
+        public List<VolunteerEventReview> VolunteerEventReviews { get; set; }
+
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
         public string Title { get; set; }

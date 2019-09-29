@@ -28,6 +28,8 @@ namespace HelpLight.Repository.Contracts
 
         public string Location { get; set; }
 
+        public List<VolunteerEventReview> VolunteerEventReviews { get; set; }
+
         [Required]
         public Guid IdOrganization { get; set; }
     }

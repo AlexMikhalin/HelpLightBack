@@ -109,7 +109,7 @@ namespace HelpLight.Repository
         {
             try
             {
-                var events = _VaODbContext.Events.Include(e => e.PeopleRequired).ToList();
+                var events = _VaODbContext.Events.Include(e => e.PeopleRequired).Include(t => t.Applications).ToList();
                 return Mapper.Map<List<Contracts.Event>>(events);
             }
             catch
