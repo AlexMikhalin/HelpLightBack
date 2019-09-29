@@ -28,6 +28,7 @@ namespace HelpLight.Web.Controllers
                 var lsatYearAverageReaction = 4.2;
                 var countOfBurnedLastMonth = 8;
                 var countOfNewVolonteers = 23;
+                List<int> eventsAmountCount = new List<int> { 120, 146, 132, 138, 145, 158, 207, 162, 183, 195, 199, 177, 201, 210, 248, 220, 257, 233, 268, 274, 281, 284, 301, 280, 285, 290, 283, 288, 291, 294 };
 
                 return Ok( new { VolunteersAmount ,
                                 excellentReaction,
@@ -37,7 +38,8 @@ namespace HelpLight.Web.Controllers
                                 lastMonthAverageReaction,
                                 lsatYearAverageReaction,
                                 countOfBurnedLastMonth,
-                                countOfNewVolonteers } );
+                                countOfNewVolonteers,
+                                eventsAmountCount} );
             }
             catch (Exception ex)
             {
