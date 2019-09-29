@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace HelpLight.Repository
 {
@@ -37,6 +38,19 @@ namespace HelpLight.Repository
             {
                 var notifications = _VaODbContext.Notifications.Where(n => n.IdUser == userId);
                 return Mapper.Map<List<Contracts.Notification>>(notifications);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public Guid GetUserIdByEventId(Guid eventId)
+        {
+            try
+            {
+                var userID = _VaODbContext.Events.Where(e => e.IdEvent == eventId).Include(r => r.Organization).ThenInclude(o => o.User).FirstOrDefault();
+                return userID.Organization.User.IdUser;
             }
             catch
             {

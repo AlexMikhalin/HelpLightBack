@@ -8,5 +8,6 @@ namespace HelpLight.Repository.Contracts
     {
         void AddNotification(Notification notification);
         List<Notification> GetNotifications(Guid userId);
+        Guid GetUserIdByEventId(Guid eventId);
     }
 }

@@ -10,7 +10,7 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Cors;
 
-namespace HelpLight.Controllers
+namespace HelpLight.Web.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("MyPolicy")]

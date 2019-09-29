@@ -15,10 +15,13 @@ namespace HelpLight.Web.Controllers
     public class ApplicationController : ControllerBase
     {
         private readonly IApplicationRepository _applicationRepository;
+        private readonly INotificationRepository _notificationRepository;
 
-        public ApplicationController(IApplicationRepository _applicationRepository)
+        public ApplicationController(IApplicationRepository _applicationRepository, 
+                                     INotificationRepository _notificationRepository)
         {
             this._applicationRepository = _applicationRepository;
+            this._notificationRepository = _notificationRepository;
         }
 
         // POST: api/Events
@@ -31,6 +34,16 @@ namespace HelpLight.Web.Controllers
                 try
                 {
                     _applicationRepository.CreateApplication(application);
+
+
+                    var notification = new Notification()
+                    {
+                        IdNotification = new Guid(),
+                        Description = "Ура! Новая заявка на мероприятие!",
+                        IdUser = _notificationRepository.GetUserIdByEventId(application.IdEvent)
+                    };
+
+                    _notificationRepository.AddNotification(notification);
                     return Ok();
                 }
                 catch (Exception ex)
@@ -73,6 +86,7 @@ namespace HelpLight.Web.Controllers
             try
             {
                 _applicationRepository.ApproveApplication(applicationId);
+
                 return Ok();
             }
             catch (Exception ex)
@@ -132,7 +146,8 @@ namespace HelpLight.Web.Controllers
         {
             try
             {
-                _applicationRepository.RecallApplication(applicationId);
+                _applicationRepository.DeleteApplication(applicationId);
+                //_applicationRepository.RecallApplication(applicationId);
                 return Ok();
             }
             catch (Exception ex)
