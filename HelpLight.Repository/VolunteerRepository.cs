@@ -66,7 +66,7 @@ namespace HelpLight.Repository
 
                 return volunteer;
             }
-            catch
+            catch (Exception ex)
             {
                 throw;
             }

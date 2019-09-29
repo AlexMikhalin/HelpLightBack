@@ -61,8 +61,9 @@ namespace HelpLight.Web
             serviceCollection.AddTransient<IKarmaRepository, KarmaRepository>();
             serviceCollection.AddTransient<IWallRepository, WallRepository>();
             serviceCollection.AddTransient<ICommentRepository, CommentRepository>();
-            serviceCollection.AddTransient<ICardRepository, CarRepository>();
+            serviceCollection.AddTransient<ICardRepository, CardRepository>();
             serviceCollection.AddTransient<IReviewOfVolunteerRepository, ReviewOfVolunteerRepository>();
+            serviceCollection.AddTransient<INotificationRepository, NotificationRepository>();
 
             serviceCollection.AddSwaggerGen(c =>
             {

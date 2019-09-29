@@ -16,6 +16,8 @@ namespace HelpLight.Repository.Contracts
         public bool Rejected { get; set; }
         public bool Recalled { get; set; }
 
+        public bool WasOnEnent { get; set; }
+
         [Required]
         public Guid IdVolunteer { get; set; }
 

@@ -11,10 +11,14 @@ namespace HelpLight.Data.Models
         {
             Applications = new List<Application>();
             PeopleRequired = new List<PeopleRequired>();
+            Tags = new List<Tag>();
         }
 
         [Key]
         public Guid IdEvent { get; set; }
+
+        public string Type { get; set; }
+
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
         public string Title { get; set; }
@@ -23,7 +27,6 @@ namespace HelpLight.Data.Models
 
         public List<PeopleRequired> PeopleRequired { get; set; }
 
-        [Required]
         public int Tokens { get; set; }
 
         [Required]
@@ -31,5 +34,8 @@ namespace HelpLight.Data.Models
         public Organization Organization { get; set; }
 
         public List<Application> Applications { get; set; }
+        public List<Tag> Tags { get; set; }
+
+        public string Location { get; set; }
     }
 }

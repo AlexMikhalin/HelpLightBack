@@ -23,6 +23,9 @@ namespace HelpLight.Data.Contexts
         public virtual DbSet<ReviewOfVolunteer> ReviewsOfVolunteers { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
+        public virtual DbSet<Notification> Notifications { get; set; }
+        public virtual DbSet<PeopleRequired> PeopleRequireds { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
 
         public HelpLightDbContext(DbContextOptions<HelpLightDbContext> options)
             : base(options)
@@ -71,14 +74,14 @@ namespace HelpLight.Data.Contexts
                 .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
-            modelBuilder.Entity<Event>().HasMany(e => e.PeopleRequired).WithOne(d => d.Event);
+            //modelBuilder.Entity<Event>().HasMany(e => e.PeopleRequired).WithOne(d => d.Event);
 
-            modelBuilder.Entity<PeopleRequired>(entity =>
-            {
-                entity.HasOne(p => p.Event)
-                .WithMany(d => d.PeopleRequired)
-                .OnDelete(DeleteBehavior.ClientSetNull);
-            });
+            //modelBuilder.Entity<PeopleRequired>(entity =>
+            //{
+            //    entity.HasOne(p => p.Event)
+            //    .WithMany(d => d.PeopleRequired)
+            //    .OnDelete(DeleteBehavior.ClientSetNull);
+            //});
 
             modelBuilder.Entity<Application>(entity =>
             {
@@ -93,6 +96,7 @@ namespace HelpLight.Data.Contexts
                 entity.Property(p => p.Approved).HasDefaultValue(false);
                 entity.Property(p => p.Rejected).HasDefaultValue(false);
                 entity.Property(p => p.Recalled).HasDefaultValue(false);
+                entity.Property(p => p.WasOnEnent).HasDefaultValue(false);
             });
 
             modelBuilder.Entity<AchieveVolunteer>(entity =>
@@ -122,6 +126,11 @@ namespace HelpLight.Data.Contexts
                 .HasMany(p => p.ReviewsOfVolunteer)
                 .WithOne(d => d.Volunteer)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+
+            //modelBuilder.Entity<Ban>(entity =>
+            //{
+            //    entity.HasKey(pd => new { pd.IdOrganization, pd.IdVolunteer });
+            //});
 
             modelBuilder.Entity<VolunteerOrganization>(entity =>
             {

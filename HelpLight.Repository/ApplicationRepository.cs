@@ -126,30 +126,6 @@ namespace HelpLight.Repository
             return applications;
         }
 
-        public List<Contracts.Application> GetApplicationsForEvent(Guid eventId, bool onlyApproved = false)
-        {
-            var applications = new List<Contracts.Application>();
-
-            try
-            {
-                var applicationEntities = _VaODbContext.Applications.Where(a => a.IdEvent == eventId);
-
-                if (onlyApproved)
-                {
-                    applicationEntities = applicationEntities.Where(a => a.Approved == true);
-                }
-
-                applications = Mapper.Map<List<Contracts.Application>>(applicationEntities);
-            }
-            catch
-            {
-
-                throw;
-            }
-
-            return applications;
-        }
-
         public void RecallApplication(Guid applicationId)
         {
             try
@@ -161,6 +137,35 @@ namespace HelpLight.Repository
                 recalingApplication.Approved = false;
 
                 SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public void WasOnEvent(Guid applicationId)
+        {
+            try
+            {
+                var application = GetApplicationEntity(applicationId);
+
+                application.WasOnEnent = true;
+
+                SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public List<Contracts.Application> GetApplicationsByEventId(Guid eventId)
+        {
+            try
+            {
+                var apps = _VaODbContext.Applications.Where(a => a.IdEvent == eventId).ToList();
+                return Mapper.Map<List<Contracts.Application>>(apps);
             }
             catch
             {

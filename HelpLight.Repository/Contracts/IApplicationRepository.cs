@@ -13,5 +13,7 @@ namespace HelpLight.Repository.Contracts
         void RejectApplication(Guid applicationId);
         List<Application> GetApplicationsByVolunteerId(Guid volunteerId); // this one should be available for this volunteer
         void RecallApplication(Guid applicationId);
+        void WasOnEvent(Guid applicationId);
+        List<Application> GetApplicationsByEventId(Guid eventId);
     }
 }

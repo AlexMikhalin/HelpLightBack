@@ -16,5 +16,7 @@ namespace HelpLight.Data.Models
 
         public Volunteer Volunteer { get; set; }
         public Organization Organization { get; set; }
+
+        public List<Notification> Notifications { get; set; }
     }
 }
