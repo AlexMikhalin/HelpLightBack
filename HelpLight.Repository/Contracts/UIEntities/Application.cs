@@ -20,6 +20,7 @@ namespace HelpLight.Repository.Contracts
 
         [Required]
         public Guid IdVolunteer { get; set; }
+        public Volunteer Volunteer { get; set; }
 
         [Required]
         public Guid IdEvent { get; set; }

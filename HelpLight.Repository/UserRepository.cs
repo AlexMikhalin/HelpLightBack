@@ -73,7 +73,10 @@ namespace HelpLight.Repository
             try
             {
                 var dbuser = _HLDbContext.Users
-                                        .Where(u => u.IdUser == userId).Include(u => u.Volunteer).Include(u => u.Organization)
+                                        .Where(u => u.IdUser == userId)
+                                        .Include(u => u.Volunteer).ThenInclude(v => v.Skills)
+                                        .Include(i => i.Volunteer).ThenInclude(t => t.Contacts)
+                                        .Include(u => u.Organization)
                                         .FirstOrDefault();
                 var info = Mapper.Map<Contracts.User>(dbuser);
                 return info;

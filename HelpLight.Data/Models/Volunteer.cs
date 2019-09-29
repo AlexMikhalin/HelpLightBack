@@ -61,5 +61,7 @@ namespace HelpLight.Data.Models
         public List<Skill> Skills { get; set; }
 
         public List<ReviewOfVolunteer> ReviewsOfVolunteer { get; set; }
+
+        public List<VolunteerEventReview> VolunteerEventReviews { get; set; }
     }
 }

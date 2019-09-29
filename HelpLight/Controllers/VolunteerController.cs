@@ -45,15 +45,15 @@ namespace HelpLight.Web.Controllers
         [Route("UpdateVolunteerInfo")]
         public IActionResult Post([FromBody] Volunteer volunteer)
         {
-            try
-            {
-                var userId = Request.Headers["token"].ToString();
-                _volunteerRepository.ValidateVolunteer(new Guid(userId), volunteer.IdVolunteer);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            //try
+            //{
+            //    var userId = Request.Headers["token"].ToString();
+            //    _volunteerRepository.ValidateVolunteer(new Guid(userId), volunteer.IdVolunteer);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return BadRequest(ex.Message);
+            //}
 
             if (ModelState.IsValid)
             {

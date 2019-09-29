@@ -128,6 +128,16 @@ namespace HelpLight.Data.Contexts
                 .WithOne(d => d.Volunteer)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
+            modelBuilder.Entity<Volunteer>()
+                .HasMany(p => p.VolunteerEventReviews)
+                .WithOne(r => r.Volunteer)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Event>()
+                .HasMany(p => p.VolunteerEventReviews)
+                .WithOne(r => r.Event)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
             //modelBuilder.Entity<Ban>(entity =>
             //{
             //    entity.HasKey(pd => new { pd.IdOrganization, pd.IdVolunteer });

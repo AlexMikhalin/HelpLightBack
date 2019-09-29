@@ -110,6 +110,16 @@ namespace HelpLight.Repository
             try
             {
                 var events = _VaODbContext.Events.Include(e => e.PeopleRequired).Include(t => t.Applications).ToList();
+
+                foreach(var application in events)
+                {
+                    foreach(var app in application.Applications)
+                    {
+                        var volunteer = _VaODbContext.Volunteers.Where(v => v.IdVolunteer == app.IdVolunteer).FirstOrDefault();
+                        app.Volunteer = volunteer;
+                    }
+                }
+
                 return Mapper.Map<List<Contracts.Event>>(events);
             }
             catch

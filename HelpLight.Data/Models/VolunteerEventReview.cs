@@ -14,6 +14,7 @@ namespace HelpLight.Data.Models
         public int Rating { get; set; }
 
         public Guid IdEvent { get; set; }
+        public Event Event { get; set; }
 
         public Guid IdVolunteer { get; set; }
         public Volunteer Volunteer { get; set; }
